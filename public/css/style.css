@@ -1,0 +1,576 @@
+
+*,
+*::before,
+*::after
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+:root
+{
+    --White: hsl(0, 0%, 100%);
+    --Purple:  #a860ff;
+    --Light-Grey: hsl(217, 12%, 63%);
+    --Medium-Grey: hsl(216, 12%, 54%);
+    --Dark-Grey: hsl(215, 9%, 44%);
+    --Darker-Grey: hsl(216, 9%, 33%);
+    --Dark-Blue: hsl(213, 19%, 18%);
+    --Dark-Blue-transparent: hsl(213, 19%, 18%);
+    --Very-Dark-Blue: hsl(216, 12%, 8%);
+    --Dark-purple: #7945b8;
+    --BL-width : 40%;
+}
+
+
+
+
+body
+{   
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--Very-Dark-Blue);
+    color: var(--White);
+    text-decoration: none;
+
+}
+
+/*Navigation bar*/
+header
+{
+    background: var(--Dark-Blue);
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    top:0;
+    width: 100%;
+
+}
+a
+{
+    text-decoration: none;
+    color: white;
+}
+a:visited
+{
+    color: white;
+}
+a:hover
+{
+    color: var(--Purple);
+}
+main
+{
+
+    margin-bottom:50px ;
+}
+nav
+{
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: var(--Dark-Blue);
+    width: 100%;
+    transform: scale(1,0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+}
+
+.logo
+{
+
+    color : var(--White);
+    font-size: 18px;
+    display: flex;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.logo-title
+{   
+    display: flex;
+    align-items: center;
+    
+}
+
+.logo-img
+{
+    width:70px;
+
+}
+
+.nav-list{
+    margin-top: 20px;
+    list-style: none;
+}
+
+.nav-list-item
+{
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+.nav-link,.logout-btn
+{
+    color: var(--White);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+
+}
+
+.logout-btn
+{
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.nav-link:hover,.logout-btn:hover
+{
+    color:var(--Purple);
+}
+
+.nav-toggle
+{
+    display: none;
+    
+}
+.nav-toggle-label
+{
+    position: absolute;
+    top:0;
+    right: 0;
+    margin-right: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after
+{
+    display: block;
+    background: var(--White);
+    height: 2px;
+    width: 2em;
+    border-radius:2px;
+    position: relative;
+}
+.nav-toggle-label span::before,
+.nav-toggle-label span::after
+{
+    content: '';
+    position: absolute;
+}
+.nav-toggle-label span::before
+{
+    bottom: 7px;
+}
+.nav-toggle-label span::after
+{
+    top:7px;
+}
+
+
+/*looking for a nav that is sibling for nav toggle*/
+.nav-toggle:checked ~ nav,.logout-btn
+{
+    transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a,.logout-btn
+{
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+
+/*Hero Image*/
+.Hero-img-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/hero.png");
+    background-color: #BB86FC;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    
+
+  }
+  
+.Hero-inner-container {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  
+
+  
+.search-bar
+{
+    border: 2px solid var(--Purple);
+    width: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 30px;
+    background-color: var(--White);
+}
+
+.search-bar input
+{
+    width:200px;
+    height: 35px;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+}
+
+.search-bar button
+{   
+    margin: 0;
+    height: 31px;
+    width:90px;
+    background-color: var(--Purple);
+    border: none;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight:900;
+}
+
+.search-bar button:hover
+{
+    background-color: var(--Dark-purple);
+}
+
+
+
+/*Book index*/
+
+
+
+.books_listing
+{   
+    margin-top: 20px;
+    display: grid;
+    gap : 2rem;
+    padding-left: 50px;
+    padding-right: 50px;
+    grid-template-columns:repeat(3, 1fr);
+    justify-content: center;
+}
+.book-listing
+{
+
+    text-align: center;
+    background-color: var(--Dark-Blue);
+    border-radius: 10px;
+    transition: background-color 0.1s;
+}
+
+.book-listing h3
+{
+    font-family: Copernicus, "Libre Baskerville", Georgia, serif;
+    color: var(--Purple);
+    font-weight: 100;
+}
+
+.book-listing:hover
+{
+    background-color: hsl(212, 20%, 15%);
+
+}
+.book-listing img
+{
+    width:200px;
+    height: 300px;
+    margin-top: 10px;
+    transition: width 0.1s;
+}
+.book-listing img:hover
+{
+    width:205px;
+    height: 305px;
+}
+
+.book-listing a:link {
+    text-decoration: none;
+    color: white;
+  }
+  
+.book-listing a:visited {
+    text-decoration: none;
+    color: white;
+  }
+  
+.book-listing a:hover {
+    text-decoration: underline;
+    color: var(--Purple);
+  }
+  
+.book-listing a:active {
+    text-decoration: underline;
+  }
+
+.tags
+{
+    font-weight: bold; 
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+.tag
+{   
+    border: none;
+    background-color: var(--Dark-Grey);
+    border-radius: 12px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+}
+.tag:visited
+{
+    color: white;
+}
+.tag:hover
+{
+    text-decoration: none;
+    background-color: var(--Darker-Grey);
+    color: var(--Purple);
+}
+/*Book Show*/
+.book-show
+{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+    padding-right: 10%;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+.show-img-container
+{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Dark-Blue);
+    border-radius: 15px; 
+    padding:15px;
+    height: 400px;
+    gap: 1rem;
+}
+.show-info
+{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Dark-Blue);
+    border-radius: 15px; 
+    padding:15px
+}
+.show-info h4
+{
+    margin-bottom: 10px;
+}
+.show-info h3
+{
+    margin-top: 40px;
+}
+.show-info p
+{
+    margin-top: 10px;
+}
+.show-book-lang
+{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.mybooks-container
+{
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.mybooks-info
+{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.book-form-container
+{
+    margin-top: 150px;
+    margin-left: 20%;
+    margin-right: 20%;
+    gap: 1.5rem;
+    
+}
+.book-form-container form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 90%;
+    background-color: rgb(37, 45, 55);
+    padding: 8%;
+    border-radius: 15px;
+  
+}
+.book-form-container input,textarea
+{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 1rem;
+    margin-top: .4rem;
+}
+.book-form-container button,.show-img-container button
+{
+    width: 50%;
+    margin: auto;
+    border: none;
+    color : white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    height: 2.5rem;
+    background-color : var(--Purple);
+    border-radius: 20px;
+    cursor: pointer;
+}
+.show-img-container button
+{
+    font-size: .8em;
+    height: 2rem;
+    border-radius: 5px;
+    margin-left: 25%;
+}
+.book-form-container button:hover,.show-img-container button:hover
+{
+    background-color: var(--Dark-purple);
+}
+
+.book-form-container textarea
+{
+    height: 50px;
+}
+.login-container
+{
+    margin-top: 100px;
+}
+.signup-container
+{
+    margin-top: 100px;
+}
+
+@media screen and (min-width: 850px)
+{
+    .nav-toggle-label
+    {
+        display: none;
+    }
+
+    header
+    {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px,1fr);
+    }
+
+    nav 
+    {   
+        all:unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .nav-link,.logout-btn
+    {
+        opacity: 1;
+    }
+
+    .nav-list
+    {
+        display: flex;
+        justify-content:space-around;
+    }
+    .nav-list-item
+    {
+        display: inline-flex;
+        padding: 0px 20px;
+    }
+    .book-listing img
+    {
+        
+        margin-top: 10px;
+        
+    }
+    .book-show
+    {
+       
+        padding-left: 10%;
+        padding-right: 15%;
+       
+    }
+
+    .book-form-container form
+    {
+        width: 50%;
+        padding: 4%;
+    }
+    .book-form-container input,textarea
+    {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 1rem;
+        margin-top: .4rem;
+    }
+    
+    
+}
+
+
+@media screen and (min-width: 890px)
+{
+    .books_listing
+    {   
+
+        grid-template-columns:repeat(4, 1fr);
+    
+    }
+
+}
+
+@media screen and (max-width: 650px)
+{
+    .books_listing
+    {   
+
+        grid-template-columns:repeat(2, 1fr);
+    
+    }
+    .book-show
+    {
+       
+        flex-direction: column;
+       
+    }
+
+}
+
